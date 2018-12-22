@@ -497,8 +497,7 @@ class LR(LRDerveDictGerenator):
         #     self.guiyueList
         #     s = input()
         #     print(self.derveDict[int(s)])
-        self.cifa = CiFa(ALL_STARTSTATUS, ALL_STATUS, ALL_DERVEDICT,
-                         ALL_ENDSTATUS, 'v.cpp')
+
         self.stusStack = []
         self.token = tuple()
         # 使用函数参数个数检查, 由于参数能嵌套函数,所以用一个栈
@@ -710,46 +709,59 @@ class LR(LRDerveDictGerenator):
             return self.token[1].name
 
     def run(self):
-        try:
-            self.stusStack.append((self.endChar, 0))
-            self.__get_next_token()
+        self.stusStack.append((self.endChar, 0))
+        self.__get_next_token()
 
-            while True:
-                curStus = self.stusStack[-1][1]
-                # if curStus in [58, 60, 101, 140]:
-                #     print('bad...')
-                #     print(self.stusStack)
+        while True:
+            curStus = self.stusStack[-1][1]
+            # if curStus in [58, 60, 101, 140]:
+            #     print('bad...')
+            #     print(self.stusStack)
 
-                w = self.__transCurSymbol()
-                print(w, self.token_to_word())
+            w = self.__transCurSymbol()
+            print(w, self.token_to_word())
 
-                if curStus is True:
-                    for i in self.QT:
-                        print(i)
-                    print('[*]当前识别串符合该文法')
-                    return True
-                elif w not in self.derveDict[curStus].keys():
-                    firstList = list(self.derveDict[self.stusStack[-1][1]].keys())
-                    raise UnaccpetSymbol(self.stusStack[-1][0], '{}({})'.format(self.token_to_word(), w), \
-                                            firstList)
-                else:
-                    nS = self.derveDict[curStus][w]
-                    # 压栈
-                    if isinstance(nS, int):
-                        if isinstance(self.token[1], int):
-                            curWord = self.token_to_word()
-                        else:
-                            curWord = self.token[1]
-                        self.stusStack.append((curWord, nS))
-                        self.__get_next_token()
-                    # 规约
+            if curStus is True:
+                for i in self.QT:
+                    print(i)
+                print('[*]当前识别串符合该文法')
+                return True
+            elif w not in self.derveDict[curStus].keys():
+                firstList = list(self.derveDict[self.stusStack[-1][1]].keys())
+                raise UnaccpetSymbol(self.stusStack[-1][0], '{}({})'.format(self.token_to_word(), w), \
+                                     firstList)
+            else:
+                nS = self.derveDict[curStus][w]
+                # 压栈
+                if isinstance(nS, int):
+                    if isinstance(self.token[1], int):
+                        curWord = self.token_to_word()
                     else:
-                        self.__guiyue(nS)
-        except Exception as e:
-            print(e)
+                        curWord = self.token[1]
+                    self.stusStack.append((curWord, nS))
+                    self.__get_next_token()
+                # 规约
+                else:
+                    self.__guiyue(nS)
+
+    def analyse(self, checkingStr):
+        self.stusStack = []
+        self.token = tuple()
+        self.funcParamCountStack = []
+        self.tmpVarFormat = "t{}"
+        self.tmpNum = 1
+        self.SEMStack = []
+        self.QT = []
+        self.cifa = CiFa(ALL_STARTSTATUS, ALL_STATUS, ALL_DERVEDICT,
+                         ALL_ENDSTATUS, checkingStr)
+        self.run()
+        print("ok")
+        return self.QT
 
 
 if __name__ == "__main__":
+    with open("v.cpp","r") as f:
+        code = f.read()
+
     v = LR()
-    v.run()
-    print("ok")
+    v.analyse(code)

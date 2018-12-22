@@ -107,7 +107,7 @@ CSEGM SEGMENT
                     opposite = "JL"
                 elif ret.group(1) == "JL":
                     opposite = "JGE"
-                else:
+                elif ret.group(1) == "JG":
                     opposite = "JLE"
                 self.out_put_block[i] = "    %s HERE%s" % (opposite, here_num)
                 self.out_put_block[i] += "\n"
@@ -173,6 +173,8 @@ CSEGM SEGMENT
                     self.deal_arr_offset(mc.item1)
                     offset_of_a, is_define = self.find_offset(mc.item1[0])
                     self.out_put_block.append("    MOV AX,[DI+BX-%s]" % str(offset_of_a))
+                self.out_put_block.append("    SUB DI,%s" % str(self.di_stack[-1]))
+                self.di_stack[-1] = 0
                 self.out_put_block.append("    JMP PE%s" % str(self.fun_count))
 
             elif mc.opt == "pe":
@@ -382,7 +384,7 @@ CSEGM SEGMENT
                     self.out_put_block.append("    JGE %s%s" % (else_or_ie, str(self.if_count)))
                 elif opt == ">=":
                     self.out_put_block.append("    JL %s%s" % (else_or_ie, str(self.if_count)))
-                elif opt == ">=":
+                elif opt == "<=":
                     self.out_put_block.append("    JG %s%s" % (else_or_ie, str(self.if_count)))
                 self.out_put_block.append("IF%s:" % str(self.if_count))
 
@@ -549,7 +551,7 @@ CSEGM SEGMENT
         type_length = 2
         if len(item_of_tuple) == 2:
             if isinstance(item_of_tuple[1], tuple):  # (a,(b,1))
-                self.deal_arr_offset(item_of_tuple)
+                self.deal_arr_offset(item_of_tuple[1])
                 # 把b[1]的值放到BX
                 offset_of_b, is_define = self.find_offset(item_of_tuple[1][0])
                 self.out_put_block.append("    MOV BX,[DI+BX-%s]" % str(offset_of_b))
@@ -599,8 +601,9 @@ CSEGM SEGMENT
 
 if __name__ == '__main__':
     v = LR()
-    v.run()
-    mid_codes = v.get_result()
+    with open("v.cpp", "r") as f:
+        code = f.read()
+    mid_codes = v.analyse(code)
     o = Optimizer()
     o.load_mid_codes(mid_codes)
     o.run()

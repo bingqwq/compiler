@@ -508,8 +508,9 @@ class Optimizer(object):
 
 if __name__ == '__main__':
     v = LR()
-    v.run()
-    mid_codes = v.get_result()
+    with open("v.cpp", "r") as f:
+        code = f.read()
+    mid_codes = v.analyse(code)
     o = Optimizer()
     o.load_mid_codes(mid_codes)
     o.run()
