@@ -30,21 +30,45 @@ class MiddleCode(object):
         self.item2 = item2
         self.res = res
 
+    def deal_tuple(self, atuple):
+        astr = "%s[" % (atuple[0].name)
+        num = len(atuple)
+        for i in range(1, num):
+            if isinstance(atuple[i], tuple):
+                self.deal_tuple(atuple[i])
+                astr += self.deal_tuple(atuple[i])
+                astr += "["
+            elif isinstance(atuple[i], SymbolItem):
+                astr += "%s][" % str(atuple[i].name)
+            else:
+                astr += "%s][" % str(atuple[i])
+        astr = astr[:-1]
+        return astr
+
     # for test
     def __str__(self):
         if isinstance(self.item1, SymbolItem) or isinstance(self.item1, TempVar):
             item1 = self.item1.name
+        elif isinstance(self.item1, tuple):
+            item1 = self.deal_tuple(self.item1)
         else:
             item1 = self.item1
+
         if isinstance(self.item2, SymbolItem) or isinstance(self.item2, TempVar):
             item2 = self.item2.name
+        elif isinstance(self.item2, tuple):
+            item2 = self.deal_tuple(self.item2)
         else:
             item2 = self.item2
+
         if isinstance(self.res, SymbolItem) or isinstance(self.res, TempVar):
             res = self.res.name
+        elif isinstance(self.res, tuple):
+            res = self.deal_tuple(self.res)
         else:
             res = self.res
-        return "%s %s %s %s" % (self.opt, item1, item2, res)
+        ret = "%s %s %s %s" % (self.opt, item1, item2, res)
+        return ret.replace("None", "_")
 
 
 class LRDerveDictGerenator(object):
@@ -728,3 +752,4 @@ class LR(LRDerveDictGerenator):
 if __name__ == "__main__":
     v = LR()
     v.run()
+    print("ok")

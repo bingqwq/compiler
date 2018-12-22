@@ -159,10 +159,10 @@ class Optimizer(object):
                     self.deal_temp_type()
                     self.result.append("")
                     self.dag.node_list.clear()
-                    if self.deal_param_overflow() == False:
-                        self.result.clear()
-                        self.result.append("Error:函数参数不匹配")
-                        return False
+                    # if self.deal_param_overflow() == False:
+                    #     self.result.clear()
+                    #     self.result.append("Error:函数参数不匹配")
+                    #     return False
                 else:
                     pass
                 high += 1
@@ -289,7 +289,7 @@ class Optimizer(object):
     def dag_born(self, low, high):
         opts = ["+", "-", "*", "/", ">", "<", "==", ">=", "<="]
         logic_opts = [">", "<", "==", ">=", "<="]
-        sp_opts = ["if", "el", "ie", "wh", "do", "we", "pro", "ret", "pe", "param", "call"]
+        sp_opts = ["if", "el", "ie", "wh", "do", "we", "pro", "ret", "pe", "param", "call","out"]
 
         # 生成图信息
         while low <= high:
@@ -379,6 +379,9 @@ class Optimizer(object):
                 elif mc.opt in ["el", "ie", "wh", "we", "pe"]:
                     new_node = DAG_Node(number, mc.opt)
                     self.dag.node_list.append(new_node)
+                elif mc.opt == "out":
+                    new_node = DAG_Node(number, mc.opt, mc.res)
+                    self.dag.node_list.append(new_node)
 
         # 处理节点顺序
         # 非符号表项(数字 字符 小数) > 标识符　＞　形参 >　临时变量
@@ -444,6 +447,9 @@ class Optimizer(object):
         for node in self.dag.node_list:
             if node.opt == "pro":
                 mc = MiddleCode(node.opt, node.marks[0])
+                self.result.append(mc)
+            elif node.opt == "out":
+                mc = MiddleCode(node.opt, None, None, node.marks[0])
                 self.result.append(mc)
             elif node.opt in ["if", "do", "ret", "param"]:
                 mc = MiddleCode(node.opt, self.dag.node_list[node.left_node].marks[0], None, None)

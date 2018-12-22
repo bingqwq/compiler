@@ -6,7 +6,49 @@ from Digui import TempVar
 import Digui
 from newdag import *
 import re
-
+print_code_block = """PR PROC NEAR
+    MOV [DI],AX
+    MOV DL,AH
+    MOV BL,AH
+    CALL SHOW
+    MOV AX,[DI]
+    MOV DL,AL
+    MOV BL,AL
+    CALL SHOW
+    MOV AH,02H
+    MOV DL,0AH
+    INT 21H
+RET
+PR ENDP
+SHOW PROC NEAR
+    MOV CL,4
+    SHR DL,CL
+    CMP DL,10
+    JAE FUHAO
+    ADD DL,30H
+    MOV AH,02H
+    INT 21H
+    JMP NEXT
+FUHAO:
+    ADD DL,37H
+    MOV AH,02H
+    INT 21H
+NEXT:
+    AND BL,0FH
+    MOV DL,BL
+    CMP BL,10
+    JAE FUHAO2
+    ADD DL,30H
+    MOV AH,02H
+    INT 21H
+    JMP NEXT2
+FUHAO2:
+    ADD DL,37H
+    MOV AH,2
+    INT 21H
+NEXT2:
+    RET
+SHOW ENDP"""
 
 class Target_fun():
     j_w = ['_', '-', '+', '*', '/', '=', '>', '<', '>=', '<=', '==', 'ie', 'el', 'if', 'wh', 'do', 'we']
@@ -30,8 +72,7 @@ class Target_fun():
         self.wh_count_lis = list()
 
     def run(self):
-        code_head = """
-STACK SEGMENT STACK
+        code_head = """STACK SEGMENT STACK
 DB 256 DUP(?)
 STACK ENDS
 
@@ -40,45 +81,19 @@ DB 1000 DUP(?)
 DSEGM ENDS
 
 CSEGM SEGMENT
-    ASSUME CS:CSEGM, DS:DSEGM, SS:STACK
-
-PRO:
+    ASSUME CS:CSEGM, DS:DSEGM, SS:STACK"""
+        head_code2 = """PRO:
     MOV AX,DSEGM
     MOV DS,AX
     MOV AX,STACK
-    MOV SS,AX
-"""
+    MOV SS,AX"""
         self.out_put_block.append(code_head)
+        self.out_put_block.append(print_code_block)
+        self.out_put_block.append(head_code2)
         self.parse_block()
         self.out_put_block.append("CSEGM ENDS")
         self.out_put_block.append("    END PRO")
 
-        # 修改短跳为长跳
-        # here_num = 1
-        # i = 0
-        # for l in self.out_put_block:
-        #     ret = re.search(r'(JNE|JLE|JGE|JL|JG) (.*)', l)
-        #     if ret:
-        #         self.out_put_block[i] = "    "
-        #         self.out_put_block[i] += ret.group(1)
-        #         self.out_put_block[i] += " "
-        #         self.out_put_block[i] += "HERE%s" % here_num
-        #         self.out_put_block[i] += "\n"
-        #         self.out_put_block[i] += "HERE%s: JMP %s\n" % (str(here_num), ret.group(2))
-        #         here_num += 1
-        # i += 1
-        # here_num = 1
-        # length = len(self.out_put_block)
-        # for i in range(0, length):
-        #     ret = re.search(r'(JNE|JLE|JGE|JL|JG) (.*)', self.out_put_block[i])
-        #     if ret:
-        #         self.out_put_block[i] = "    "
-        #         self.out_put_block[i] += ret.group(1)
-        #         self.out_put_block[i] += " "
-        #         self.out_put_block[i] += "HERE%s" % here_num
-        #         self.out_put_block[i] += "\n"
-        #         self.out_put_block[i] += "HERE%s: JMP %s" % (str(here_num), ret.group(2))
-        #         here_num += 1
         here_num = 1
         length = len(self.out_put_block)
         for i in range(0, length):
@@ -121,7 +136,7 @@ PRO:
         cur_mc = 0
         for mc in self.mid_codes:
             cur_mc += 1
-            if mc == "":
+            if isinstance(mc, str):
                 continue
             elif mc.opt == "pro":
 
@@ -482,7 +497,7 @@ PRO:
                     offset_of_a, is_define = self.find_offset(mc.item1[0])
                     self.out_put_block.append("    MOV AX,[DI+BX-%s]" % str(offset_of_a))
                     self.out_put_block.append("    PUSH AX")
-            elif mc.opt is "call":
+            elif mc.opt == "call":
                 # call fun _ a/call fun _ ()
                 if isinstance(mc.res, SymbolItem):
                     self.out_put_block.append("    CALL %s" % mc.item1.name)
@@ -503,6 +518,17 @@ PRO:
                     param_num = mc.item1.addr.paramNum
                     for i in range(0, param_num):
                         self.out_put_block.append("    POP DX")
+            elif mc.opt == "out":
+                if isinstance(mc.res, int):
+                    self.out_put_block.append("    MOV AX,%s" % str(mc.res))
+                elif isinstance(mc.res, SymbolItem):
+                    offset, is_define = self.find_offset(mc.res)
+                    self.out_put_block.append("    MOV AX,[DI-%s]" % offset)
+                elif isinstance(mc.res, tuple):
+                    offset, is_define = self.find_offset(mc.res[0])
+                    self.deal_arr_offset(mc.res)
+                    self.out_put_block.append("    MOV AX,[DI+BX-%s]" % offset)
+                self.out_put_block.append("    CALL PR")
 
     def find_down_for_if(self,cur_mc):
         flag = 0
