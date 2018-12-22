@@ -6,7 +6,7 @@ int main(){
 	while(i<3) {
 		int j = 0;
 		while(j<3) {
-			a[i][j] = i + j;
+			a[i][j] = i * j;
 			j = j + 1;
 		}
 		i = i + 1;

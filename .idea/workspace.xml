@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22b4a502-8f4e-4e23-9a69-6dc8f251817a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/数组嵌套.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/二维数组.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/targetCode.py" beforeDir="false" afterPath="$PROJECT_DIR$/targetCode.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/v.cpp" afterDir="false" />
@@ -14,17 +14,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/compiler$newdag.coverage" NAME="newdag Coverage Results" MODIFIED="1545470457953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/compiler$newdag.coverage" NAME="newdag Coverage Results" MODIFIED="1545487042000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/_$targetCode.coverage" NAME="targetCode Coverage Results" MODIFIED="1545453499996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/zhengli_LR_SA$newdag.coverage" NAME="newdag Coverage Results" MODIFIED="1545459459752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/zhengli_LR_SA$targetCode.coverage" NAME="targetCode Coverage Results" MODIFIED="1545460001836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/_$newdag.coverage" NAME="newdag Coverage Results" MODIFIED="1545472739111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/compiler$auto_dev.coverage" NAME="auto_dev Coverage Results" MODIFIED="1545469900193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/zhengli_LR_SA$auto_dev.coverage" NAME="auto_dev Coverage Results" MODIFIED="1545459415522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/compiler$targetCode.coverage" NAME="targetCode Coverage Results" MODIFIED="1545482632720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/compiler$targetCode.coverage" NAME="targetCode Coverage Results" MODIFIED="1545489366389" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/zhengli_LR_SA$Gui.coverage" NAME="Gui Coverage Results" MODIFIED="1545463057751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/_$Gui.coverage" NAME="Gui Coverage Results" MODIFIED="1545480363556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/compiler$Gui.coverage" NAME="Gui Coverage Results" MODIFIED="1545485616339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/compiler$Gui.coverage" NAME="Gui Coverage Results" MODIFIED="1545491532562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -45,10 +45,31 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/targetCode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="572" column="24" lean-forward="true" selection-start-line="572" selection-start-column="24" selection-end-line="572" selection-end-column="24" />
+            <state relative-caret-position="360">
+              <caret line="311" column="72" selection-start-line="311" selection-start-column="72" selection-end-line="311" selection-end-column="72" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/二维数组.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="728">
+              <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/newdag.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9">
+              <caret line="140" selection-start-line="140" selection-end-line="140" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainwindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
+            <state relative-caret-position="1092">
               <caret line="216" column="72" lean-forward="true" selection-start-line="216" selection-start-column="72" selection-end-line="216" selection-end-column="72" />
             </state>
           </provider>
@@ -75,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/v.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="644">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -121,9 +142,10 @@
         <option value="$PROJECT_DIR$/../斐波那契.cpp" />
         <option value="$PROJECT_DIR$/斐波那契.cpp" />
         <option value="$PROJECT_DIR$/mainwindow.py" />
-        <option value="$PROJECT_DIR$/v.cpp" />
-        <option value="$PROJECT_DIR$/targetCode.py" />
         <option value="$PROJECT_DIR$/数组嵌套.c" />
+        <option value="$PROJECT_DIR$/v.cpp" />
+        <option value="$PROJECT_DIR$/二维数组.c" />
+        <option value="$PROJECT_DIR$/targetCode.py" />
       </list>
     </option>
   </component>
@@ -284,7 +306,7 @@
       <workItem from="1545463808189" duration="274000" />
       <workItem from="1545464114148" duration="6392000" />
       <workItem from="1545470656100" duration="6888000" />
-      <workItem from="1545480463036" duration="5446000" />
+      <workItem from="1545480463036" duration="10521000" />
     </task>
     <task id="LOCAL-00001" summary="斐波那契 冒泡排序 阶乘 没问题">
       <created>1545483628296</created>
@@ -293,11 +315,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545483628296</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改了数组嵌套的问题">
+      <created>1545486374422</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1545486374422</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27304000" />
+    <option name="totallyTimeSpent" value="32379000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
@@ -331,7 +360,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="斐波那契 冒泡排序 阶乘 没问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="斐波那契 冒泡排序 阶乘 没问题" />
+    <MESSAGE value="修改了数组嵌套的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了数组嵌套的问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -339,7 +369,7 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/newdag.py</url>
           <line>140</line>
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -374,20 +404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/v.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mainwindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="216" column="72" lean-forward="true" selection-start-line="216" selection-start-column="72" selection-end-line="216" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/数组嵌套.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -395,10 +411,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/v.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newdag.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/二维数组.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainwindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="216" column="72" lean-forward="true" selection-start-line="216" selection-start-column="72" selection-end-line="216" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/targetCode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="572" column="24" lean-forward="true" selection-start-line="572" selection-start-column="24" selection-end-line="572" selection-end-column="24" />
+        <state relative-caret-position="360">
+          <caret line="311" column="72" selection-start-line="311" selection-start-column="72" selection-end-line="311" selection-end-column="72" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
