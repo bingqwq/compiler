@@ -1,16 +1,22 @@
-int fun(int n) {
-    int f;
-    if (n == 1) {
-        f=1;
+int main(){
+    int a[10];
+    int i=0;
+    while(i<10) {
+        a[i] = i;
+        i = i + 1;
     }
-    else {
-        f = fun(n-1) * n;
+    i = 0;
+    while(i<9) {
+        int j = 0;
+        while(j<9-i) {
+            if (a[j]<a[j+1]) {
+                int t = a[j];
+                a[j] = a[j+1];
+                a[j+1] = t;
+            }
+            j = j + 1;
+        }
+        i = i + 1;
     }
-    return f;
-}
-
-int main() {
-    int a = 4;
-    int b;
-    b = fun(a);
+    return 0;
 }

@@ -486,6 +486,9 @@ class LR(LRDerveDictGerenator):
         self.SEMStack = []
         self.QT = []
 
+    def get_result(self):
+        return self.QT
+
     def __get_next_token(self):
         self.token = self.cifa.get_next_token()
 
