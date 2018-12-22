@@ -555,6 +555,9 @@ CSEGM SEGMENT
                 # 把b[1]的值放到BX
                 offset_of_b, is_define = self.find_offset(item_of_tuple[1][0])
                 self.out_put_block.append("    MOV BX,[DI+BX-%s]" % str(offset_of_b))
+                self.out_put_block.append("    MOV AX,2")
+                self.out_put_block.append("    MUL BX")
+                self.out_put_block.append("    MOV BX,AX")
             elif isinstance(item_of_tuple[1], SymbolItem):  # (a,b)
                 offset_of_b, is_define = self.find_offset(item_of_tuple[1])
                 self.out_put_block.append("    MOV BX,[DI-%s]" % str(offset_of_b))
