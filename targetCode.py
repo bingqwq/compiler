@@ -553,12 +553,6 @@ CSEGM SEGMENT
                 flag -= 1
 
     def deal_arr_offset(self, item_of_tuple):
-
-        # self.out_put_block.append("    PUSH AX")
-        # self.out_put_block.append("    PUSH BX")
-        # self.out_put_block.append("    PUSH CX")
-        # self.out_put_block.append("    PUSH DX")
-
         type_length = 2
         if len(item_of_tuple) == 2:
             if isinstance(item_of_tuple[1], tuple):  # (a,(b,1))
@@ -579,20 +573,31 @@ CSEGM SEGMENT
                 self.out_put_block.append("    MOV BX,%s" % str(item_of_tuple[1]*type_length))
         elif len(item_of_tuple) >= 2: # (a,1,1) (a,2,b) (a,a(1,1),2)
             dimension = len(item_of_tuple) - 1
-            flag = -1
             self.out_put_block.append("    MOV CX,0")
+            cur_index = 0
             for index in item_of_tuple[1:-1]:
+                cur_index += 1
                 if isinstance(index, int):
-                    offset = index * item_of_tuple[0].addr.levelLenList[flag]
-                    flag -= 1
+
+                    num = dimension - cur_index
+                    offset = 1
+                    for j in range(1, num+1):
+                        offset *= item_of_tuple[0].addr.levelLenList[-j]
+
+                    offset = offset * index  # 2*?
+
                     self.out_put_block.append("    MOV BX,%s" % str(offset))
                     self.out_put_block.append("    ADD CX,BX")
                 elif isinstance(index, SymbolItem):
                     offset_of_b, is_define = self.find_offset(index)
 
+                    num = dimension - cur_index
+                    offset = 1
+                    for j in range(1, num+1):
+                        offset *= item_of_tuple[0].addr.levelLenList[-j]
+
                     self.out_put_block.append("    MOV BX,[DI-%s]" % str(offset_of_b))
-                    self.out_put_block.append("    MOV AX,%s" % str(item_of_tuple[0].addr.levelLenList[flag]))
-                    flag -= 1
+                    self.out_put_block.append("    MOV AX,%s" % str(offset))
                     self.out_put_block.append("    MUL BX")
                     self.out_put_block.append("    MOV BX,AX")
                     self.out_put_block.append("    ADD CX,BX")
@@ -607,11 +612,6 @@ CSEGM SEGMENT
             self.out_put_block.append("    MOV AX,%s" % str(type_length))
             self.out_put_block.append("    MUL BX")
             self.out_put_block.append("    MOV BX,AX")
-
-        # self.out_put_block.append("    POP DX")
-        # self.out_put_block.append("    POP CX")
-        # self.out_put_block.append("    POP BX")
-        # self.out_put_block.append("    POP AX")
 
 
     def calculate_offset(self, item):

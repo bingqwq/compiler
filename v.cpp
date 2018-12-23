@@ -1,4 +1,8 @@
-
+// dang qian jie guo
+//0 1
+//1 2
+//1 2
+//2 3
 int main() {
     int a[2][2][2];
 
@@ -15,7 +19,6 @@ int main() {
             }
         i = i + 1;
     }
-
     i = 0;
     while(i < 2) {
         int j = 0;
