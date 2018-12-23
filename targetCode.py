@@ -578,35 +578,53 @@ CSEGM SEGMENT
             for index in item_of_tuple[1:-1]:
                 cur_index += 1
                 if isinstance(index, int):
-
                     num = dimension - cur_index
                     offset = 1
                     for j in range(1, num+1):
                         offset *= item_of_tuple[0].addr.levelLenList[-j]
-
-                    offset = offset * index  # 2*?
-
+                    offset = offset * index
                     self.out_put_block.append("    MOV BX,%s" % str(offset))
                     self.out_put_block.append("    ADD CX,BX")
                 elif isinstance(index, SymbolItem):
                     offset_of_b, is_define = self.find_offset(index)
-
                     num = dimension - cur_index
                     offset = 1
                     for j in range(1, num+1):
                         offset *= item_of_tuple[0].addr.levelLenList[-j]
-
                     self.out_put_block.append("    MOV BX,[DI-%s]" % str(offset_of_b))
                     self.out_put_block.append("    MOV AX,%s" % str(offset))
                     self.out_put_block.append("    MUL BX")
                     self.out_put_block.append("    MOV BX,AX")
                     self.out_put_block.append("    ADD CX,BX")
+                elif isinstance(index, tuple):
+                    num = dimension - cur_index
+                    offset = 1
+                    for j in range(1, num + 1):
+                        offset *= item_of_tuple[0].addr.levelLenList[-j]
+
+                    self.out_put_block.append("    PUSH CX")
+                    self.deal_arr_offset(index)
+                    offset_of_b, is_define = self.find_offset(index[0])
+                    self.out_put_block.append("    MOV BX,[DI+BX-%s]" % str(offset_of_b))
+                    self.out_put_block.append("    MOV AX,%s" % str(offset))
+                    self.out_put_block.append("    MUL BX")
+                    self.out_put_block.append("    MOV BX,AX")
+                    self.out_put_block.append("    POP CX")
+                    self.out_put_block.append("    ADD CX,BX")
+
             if isinstance(item_of_tuple[-1], int):
                 self.out_put_block.append("    MOV BX,%s" % str(item_of_tuple[-1]))
                 self.out_put_block.append("    ADD CX,BX")
             elif isinstance(item_of_tuple[-1], SymbolItem):
                 offset_of_b, is_define = self.find_offset(item_of_tuple[-1])
                 self.out_put_block.append("    MOV BX,[DI-%s]" % str(offset_of_b))
+                self.out_put_block.append("    ADD CX,BX")
+            elif isinstance(item_of_tuple[-1], tuple):
+                offset_of_b, is_define = self.find_offset(index[0])
+                self.out_put_block.append("    PUSH CX")
+                self.deal_arr_offset(item_of_tuple[-1])
+                self.out_put_block.append("    MOV BX,[DI+BX-%s]" % str(offset_of_b))
+                self.out_put_block.append("    POP CX")
                 self.out_put_block.append("    ADD CX,BX")
             self.out_put_block.append("    MOV BX,CX")
             self.out_put_block.append("    MOV AX,%s" % str(type_length))

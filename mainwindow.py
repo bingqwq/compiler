@@ -87,6 +87,9 @@ class MyLexer(QsciLexerCustom):
             previous_style_nr = editor.SendScintilla(editor.SCI_GETSTYLEAT, start - 1)
             if previous_style_nr == 3:
                 multiline_comm_flag = False
+        # # multiline_comm_flag = False
+        # if start > 0:
+        #     multiline_comm_flag = False
         for i, token in enumerate(token_list):
             if multiline_comm_flag:
                 self.setStyling(token[1], 3)
@@ -129,6 +132,7 @@ class Ui_MainWindow(object):
         self.textEdit.setMarginType(0, QsciScintilla.NumberMargin)
         self.textEdit.setMarginWidth(0, "0000")
         self.textEdit.setMarginsForegroundColor(QColor("#ff888888"))
+        # self.textEdit.setUtf8(True)
         self.__laxer = MyLexer(self.textEdit)
         self.textEdit.setLexer(self.__laxer)
 

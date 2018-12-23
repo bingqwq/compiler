@@ -1,6 +1,7 @@
 int main() {
     int a[3][3];
 
+    //assigment
     int i = 0;
     while(i < 3) {
         int j = 0;
@@ -10,6 +11,7 @@ int main() {
             }
         i = i + 1;
     }
+    //output
     i = 0;
     while(i < 3) {
         int j = 0;

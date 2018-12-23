@@ -1,18 +1,18 @@
 int main(){
     int a[10];
-    //fuzhi
+    //assigment
     int i=0;
     while(i<10) {
         a[i] = i;
         i = i + 1;
     }
-    //shuchu
+    //output
     i = 0;
     while(i<10) {
         print(a[i]);
         i = i + 1;
     }
-    //paixu
+    //bubble
     i = 0;
     while(i<9) {
         int j = 0;
@@ -26,7 +26,7 @@ int main(){
         }
         i = i + 1;
     }
-    //shuchu
+    //output
     i = 0;
     while(i<10) {
         print(a[i]);
