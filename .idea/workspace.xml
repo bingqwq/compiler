@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22b4a502-8f4e-4e23-9a69-6dc8f251817a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newdag.py" beforeDir="false" afterPath="$PROJECT_DIR$/newdag.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数组嵌套.c" beforeDir="false" afterPath="$PROJECT_DIR$/数组嵌套.c" afterDir="false" />
-    </list>
+    <list default="true" id="22b4a502-8f4e-4e23-9a69-6dc8f251817a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +37,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/targetCode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
+            <state relative-caret-position="-15075">
               <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -63,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newdag.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="313" column="79" selection-start-line="313" selection-start-column="79" selection-end-line="313" selection-end-column="79" />
+            <state relative-caret-position="8988">
+              <caret line="321" column="29" lean-forward="true" selection-start-line="321" selection-start-column="29" selection-end-line="321" selection-end-column="29" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -296,7 +292,7 @@
       <workItem from="1545480463036" duration="12410000" />
       <workItem from="1545524959710" duration="9076000" />
       <workItem from="1545534123697" duration="249000" />
-      <workItem from="1545534504111" duration="4001000" />
+      <workItem from="1545534504111" duration="4270000" />
     </task>
     <task id="LOCAL-00001" summary="斐波那契 冒泡排序 阶乘 没问题">
       <created>1545483628296</created>
@@ -389,15 +385,21 @@
       <option name="project" value="LOCAL" />
       <updated>1545540061394</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="new dag bugFix(修改了数组下标位置时被优化的问题)">
+      <created>1545541788734</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1545541788734</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47594000" />
+    <option name="totallyTimeSpent" value="47863000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1052" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" weight="0.3299356" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -434,7 +436,8 @@
     <MESSAGE value="bugFix" />
     <MESSAGE value="添加了矩阵乘法" />
     <MESSAGE value="nothing" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothing" />
+    <MESSAGE value="new dag bugFix(修改了数组下标位置时被优化的问题)" />
+    <option name="LAST_COMMIT_MESSAGE" value="new dag bugFix(修改了数组下标位置时被优化的问题)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../result.txt" />
@@ -526,17 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/targetCode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#205#760#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/auto_dev.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-504">
@@ -546,10 +538,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newdag.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="313" column="79" selection-start-line="313" selection-start-column="79" selection-end-line="313" selection-end-column="79" />
+        <state relative-caret-position="8988">
+          <caret line="321" column="29" lean-forward="true" selection-start-line="321" selection-start-column="29" selection-end-line="321" selection-end-column="29" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/targetCode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15075">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#205#760#0" />
           </folding>
         </state>
       </provider>
