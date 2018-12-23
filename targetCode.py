@@ -281,11 +281,11 @@ CSEGM SEGMENT
                     offset_of_a, is_define = self.find_offset(mc.item2)
                     self.out_put_block.append("    MOV BX,[DI-%s]" % str(offset_of_a))
                 elif isinstance(mc.item2, tuple):
-                    self.out_put_block.append("    MOV CX,AX")
+                    self.out_put_block.append("    PUSH AX")
                     self.deal_arr_offset(mc.item2)
+                    self.out_put_block.append("    POP AX")
                     offset_of_a, is_define = self.find_offset(mc.item2[0])
                     self.out_put_block.append("    MOV BX,[DI+BX-%s]" % str(offset_of_a))
-                    self.out_put_block.append("    MOV AX,CX")
 
                 # 计算
                 if mc.opt == "+":
