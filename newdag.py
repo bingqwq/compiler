@@ -301,7 +301,19 @@ class Optimizer(object):
             # 如果是赋值操作 即形如 (= 1 _ a) / (= b _ a)
             if mc.opt == "=":
                 if self.not_sy_item(mc.item1):
-                    self.dag.deal_no_sys_item(number, mc.item1, mc.res)
+                    if isinstance(mc.res, tuple):
+                        flag = 0
+                        for index in mc.res[1:]:
+                            if isinstance(index, SymbolItem) or isinstance(index, tuple):
+                                new_node = DAG_Node(number, "=", mc.item1, mc.res)
+                                self.dag.delete(mc.res)
+                                self.dag.node_list.append(new_node)
+                                flag = 1
+                                break
+                        if flag == 0:
+                            self.dag.deal_no_sys_item(number, mc.item1, mc.res)
+                    else:
+                        self.dag.deal_no_sys_item(number, mc.item1, mc.res)
                 else:
                     if isinstance(mc.item1, TempVar):
                         if self.dag.find(mc.item1):
