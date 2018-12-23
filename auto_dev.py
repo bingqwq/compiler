@@ -37,6 +37,7 @@ class MiddleCode(object):
             if isinstance(atuple[i], tuple):
                 self.deal_tuple(atuple[i])
                 astr += self.deal_tuple(atuple[i])
+                astr += "]"
                 astr += "["
             elif isinstance(atuple[i], SymbolItem):
                 astr += "%s][" % str(atuple[i].name)
