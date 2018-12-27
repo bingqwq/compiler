@@ -757,6 +757,10 @@ class LR(LRDerveDictGerenator):
                          ALL_ENDSTATUS, checkingStr)
         self.run()
         print("ok")
+        # for level in self.cifa.SL.levelStack:
+        #   for sym in level.symbolList:
+        #       if sym.cat == 'f':
+        #           for _level in sym.addr.nextLevelSL:
         return self.QT
 
 
